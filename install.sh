@@ -80,10 +80,11 @@ function compile_vim_on_centos()
 {
     sudo rm -rf /usr/bin/vi
     sudo rm -rf /usr/bin/vim*
+    sudo rm -rf /usr/bin/ex
     sudo rm -rf /usr/local/bin/vim*
     sudo rm -rf /usr/share/vim/vim*
     sudo rm -rf /usr/local/share/vim/vim*
-    rm -rf ~/vim
+    #rm -rf ~/vim
 
     sudo yum install -y ruby ruby-devel lua lua-devel luajit \
         luajit-devel ctags git python python-devel \
@@ -92,8 +93,14 @@ function compile_vim_on_centos()
         perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
         perl-ExtUtils-Embed libX11-devel ncurses-devel
     
-    git clone https://github.com/vim/vim.git ~/vim
-    cd ~/vim
+    if [ ! -d "~/vim" ]; then
+        git clone https://github.com/vim/vim.git ~/vim 
+        cd ~/vim 
+    else
+        cd ~/vim 
+        make clean
+    fi
+
     ./configure --with-features=huge \
         --enable-multibyte \
         --with-tlib=tinfo \
@@ -286,7 +293,7 @@ function install_vimplus_on_ubuntu()
 function install_vimplus_on_centos()
 {
     install_prepare_software_on_centos
-    begin_install_vimplus
+    # begin_install_vimplus
 }
 
 # 在archlinux发行版安装vimplus
