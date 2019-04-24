@@ -81,6 +81,8 @@ function compile_vim_on_centos()
     sudo rm -rf /usr/bin/vi
     sudo rm -rf /usr/bin/vim*
     sudo rm -rf /usr/bin/ex
+    sudo rm -rf /usr/bin/view
+    sudo rm -rf /usr/bin/rview
     sudo rm -rf /usr/local/bin/vim*
     sudo rm -rf /usr/share/vim/vim*
     sudo rm -rf /usr/local/share/vim/vim*
